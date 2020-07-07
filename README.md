@@ -58,13 +58,13 @@ To run the PyClone analysis we can use the ```run_analysis_pipeline``` command. 
 * minor_cn - The minor copy number of the cancer cells. 
 * major_cn - The major copy number of the cancer cells.
 
-To obtain this tab delimited file, the Python function , provided in this repository can be used.
+To obtain this tab delimited file, the Sequenza_to_PyClone.py function, provided in this repository can be used.
 ```
 Sequenza_to_PyClone.py -i Run1_segments.txt -v variants.vcf -o PyClone_input.tsv
 ```
 # Clonal Reconstruction using PyClone
 
-Finally, the PyClone_input.tsv file can be used as input for PyClone.
+Finally, the PyClone_input.tsv file can be used as an input for PyClone.
 ```
 PyClone run_analysis_pipeline --in_files PyClone_input.tsv --tumour purity $purity --prior major_copy_number
 ```
