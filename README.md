@@ -62,7 +62,7 @@ To obtain this tab delimited file, the Sequenza_to_PyClone.py function, provided
 ```
 Sequenza_to_PyClone.py -i Run1_segments.txt -v variants.vcf -o PyClone_input.tsv
 ```
-This function generates a tab delimited file with the required fields for PyClone. In addition, a *warning_sequenza_mutations.tsv* is generated, indicating the mutations that are not present in the Sequenza segments. Since no copy number is calculated using Sequenza, a default major copy number of 2 is allocated to these mutations.
+This function generates a tab delimited file with the required fields for PyClone. In addition, a *warning_sequenza_mutations.tsv* is generated, indicating the mutations that are not present in the Sequenza segments. Since no copy number is calculated using Sequenza, the minor and major copy number are set to 1 for these mutations.
 
 # Clonal Reconstruction using PyClone
 
