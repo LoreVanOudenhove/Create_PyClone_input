@@ -11,16 +11,19 @@ These guidelines provides a workflow to infer the prevalence of somatic mutation
 [Sequenza](https://cran.r-project.org/web/packages/sequenza/vignettes/sequenza.html) is an R package that enables the efficient estimation of tumour cellularity and ploidy, and generation of copy number, loss-of-heterozygosity, and mutation frequency profiles. More detailed information on how to run Sequenza can be found in the [Sequenza User Guide](https://cran.r-project.org/web/packages/sequenza/vignettes/sequenza.html).
 
 ### Running Sequenza: Preprocessing of Input Files
-* Process a FASTA file to produce a GC Wiggle track file:\n
+* Process a FASTA file to produce a GC Wiggle track file:
 ```
 sequenza−utils gc_wiggle −w 50 --fasta hg38.fa -o hg38.gc50Base.wig.gz
 ```
-
-* Process BAM and Wiggle files to produce a seqz file:\n
-    sequenza−utils bam2seqz -n normal.bam -t tumor.bam --fasta hg38.fa \
-        -gc hg38.gc50Base.wig.gz -o out.seqz.gz
-* Post-process by binning the original seqz file:\
-    sequenza−utils seqz_binning --seqz out.seqz.gz -w 50 -o out small.seqz.gz
+* Process BAM and Wiggle files to produce a seqz file:
+```
+sequenza−utils bam2seqz -n normal.bam -t tumor.bam --fasta hg38.fa \
+    -gc hg38.gc50Base.wig.gz -o out.seqz.gz
+```
+* Post-process by binning the original seqz file:
+```
+sequenza−utils seqz_binning --seqz out.seqz.gz -w 50 -o out small.seqz.gz
+```
 
 
 ---
