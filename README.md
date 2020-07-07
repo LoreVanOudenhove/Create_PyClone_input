@@ -49,7 +49,7 @@ This Sequenza analysis will generate a number of files and plots, among which th
 
 # Create input for PyClone
 
-PyClone is a statistical model for inference of clonal population structures in cancers. Its algorithm relies on a Bayesian clustering method for grouping sets of deeply sequenced somatic mutations into putative clonal clusters while estimating their cellular prevalences and accounting for allelic imbalances introduced by segmental copy-number changes and normal-cell contamination. **maybe add a link to pyclone doc like you did w/ sequenza ?**
+(PyClone)[https://bitbucket.org/aroth85/pyclone/wiki/Home] is a statistical model for inference of clonal population structures in cancers. Its algorithm relies on a Bayesian clustering method for grouping sets of deeply sequenced somatic mutations into putative clonal clusters while estimating their cellular prevalences and accounting for allelic imbalances introduced by segmental copy-number changes and normal-cell contamination.
 
 To run the PyClone analysis we can use the ```run_analysis_pipeline``` command. This command requires a tab delimited input file with the subsequent fields: 
 
@@ -68,12 +68,11 @@ Sequenza_to_PyClone.py -i Run1_segments.txt -v variants.vcf -o PyClone_input.tsv
 
 Finally, the PyClone_input.tsv file can be used as an input for PyClone.
 
-**I think the --tumor purity parameter is missing an underscore - corrected accordingly but please correct back if I'm wrong**
 ```
-PyClone run_analysis_pipeline --in_files PyClone_input.tsv --tumour_purity $purity --prior major_copy_number
+PyClone run_analysis_pipeline --in_files PyClone_input.tsv --tumour_contents $purity --prior major_copy_number
 ```
 
-**Also maybe explain quickly the output of pyclone ?**
+PyClone generates a number of tables and plots, summarising the identified clusters and the associated cellular prevalences. 
 
 ---
 ## References
