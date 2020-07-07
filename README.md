@@ -12,12 +12,12 @@ These guidelines provides a workflow to infer the prevalence of somatic mutation
 
 ### Running Sequenza: Preprocessing of Input Files
 * Process a FASTA file to produce a GC Wiggle track file:
-   sequenza−utils gc_wiggle −w 50 --fasta hg38.fa -o hg38.gc50Base.wig.gz
+        sequenza−utils gc_wiggle −w 50 --fasta hg38.fa -o hg38.gc50Base.wig.gz
 * Process BAM and Wiggle files to produce a seqz file:
-sequenza−utils bam2seqz -n normal.bam -t tumor.bam --fasta hg38.fa \
-    -gc hg38.gc50Base.wig.gz -o out.seqz.gz
+        sequenza−utils bam2seqz -n normal.bam -t tumor.bam --fasta hg38.fa \
+            -gc hg38.gc50Base.wig.gz -o out.seqz.gz
 * Post-process by binning the original seqz file:
-sequenza−utils seqz_binning --seqz out.seqz.gz -w 50 -o out small.seqz.gz
+        sequenza−utils seqz_binning --seqz out.seqz.gz -w 50 -o out small.seqz.gz
 
 
 ---
