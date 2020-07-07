@@ -12,8 +12,9 @@ These guidelines provides a workflow to infer the prevalence of somatic mutation
 
 ### Running Sequenza: Preprocessing of Input Files
 - Process a FASTA file to produce a GC Wiggle track file
-    sequenza−utils gc_wiggle −w 50 --fasta hg38.fa -o hg38.gc50Base.wig.gz
-    
+'''
+sequenza−utils gc_wiggle −w 50 --fasta hg38.fa -o hg38.gc50Base.wig.gz
+'''   
 
 
 ---
