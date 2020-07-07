@@ -72,4 +72,5 @@ PyClone run_analysis_pipeline --in_files PyClone_input.tsv --tumour purity $puri
 ---
 ## References
 Favero, F., Joshi, T., Marquard, A. M., Birkbak, N. J., Krzystanek, M., Li, Q., … Eklund, A. C. (2015). Sequenza: Allele-specific copy number and mutation profiles from tumor sequencing data. Annals of Oncology, 26(1), 64–70. https://doi.org/10.1093/annonc/mdu479
+
 Roth, A., Khattra, J., Yap, D., Wan, A., Laks, E., Biele, J., Ha, G., Aparicio, S., Bouchard-Côté, A., & Shah, S. P. (2014). PyClone: statistical inference of clonal population structure in cancer. Nature methods, 11(4), 396–398. https://doi.org/10.1038/nmeth.2883
