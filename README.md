@@ -68,7 +68,8 @@ Finally, the PyClone_input.tsv file and the estimated tumour purity can be used 
 PyClone run_analysis_pipeline --in_files PyClone_input.tsv --tumour_contents $purity --prior major_copy_number
 ```
 
-PyClone generates a number of tables and plots, summarising the identified clusters and the associated cellular prevalences. 
+PyClone generates a number of tables and plots, summarising the identified clusters and the associated cellular prevalences.
+
 ![PyClone output](https://github.com/LoreVanOudenhove/Create_PyClone_input/blob/master/images/density.png)
 
 ---
