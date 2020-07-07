@@ -9,3 +9,8 @@ These guidelines provides a workflow to infer the prevalence of somatic mutation
 ## Copy Number, Tumor Purity and Ploidy Estimation using Sequenza. 
 
 [Sequenza](https://cran.r-project.org/web/packages/sequenza/vignettes/sequenza.html) is an R package that enables the efficient estimation of tumour cellularity and ploidy, and generation of copy number, loss-of-heterozygosity, and mutation frequency profiles.
+
+
+---
+## References
+Favero, F., Joshi, T., Marquard, A. M., Birkbak, N. J., Krzystanek, M., Li, Q., … Eklund, A. C. (2015). Sequenza: Allele-specific copy number and mutation profiles from tumor sequencing data. Annals of Oncology, 26(1), 64–70. https://doi.org/10.1093/annonc/mdu479
