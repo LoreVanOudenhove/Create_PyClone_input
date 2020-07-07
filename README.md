@@ -45,7 +45,7 @@ ploidy <- confint$max.ploidy
 
 This Sequenza analysis will generate a number of files and plots, among which the Run1_segments.txt file that contains detected segments, with estimated copy number state at each segment.
 
-# Clonal Reconstruction using PyClone
+# Create input for PyClone
 
 PyClone is a statistical model for inference of clonal population structures in cancers. Its algorithm relies on a Bayesian clustering method for grouping sets of deeply sequenced somatic mutations into putative clonal clusters while estimating their cellular prevalences and accounting for allelic imbalances introduced by segmental copy-number changes and normal-cell contamination. 
 
@@ -61,6 +61,12 @@ To run the PyClone analysis we can use the ```run_analysis_pipeline``` command. 
 To obtain this tab delimited file, the Python function , provided in this repository can be used.
 ```
 Sequenza_to_PyClone.py -i Run1_segments.txt -v variants.vcf -o PyClone_input.tsv
+```
+# Clonal Reconstruction using PyClone
+
+Finally, the PyClone_input.tsv file can be used as input for PyClone.
+```
+PyCLone run_analysis_pipeline --in_files PyClone_input.tsv --tumour purity *purity* --prior major_copy_number
 ```
 
 ---
