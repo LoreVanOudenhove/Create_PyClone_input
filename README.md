@@ -69,6 +69,7 @@ PyClone run_analysis_pipeline --in_files PyClone_input.tsv --tumour_contents $pu
 ```
 
 PyClone generates a number of tables and plots, summarising the identified clusters and the associated cellular prevalences. 
+![PyClone output](https://github.com/LoreVanOudenhove/Create_PyClone_input/images/density.png)
 
 ---
 ## References
