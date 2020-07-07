@@ -4,7 +4,7 @@ The mutational profile of a cancer genome is characterized by a series of altera
 
 The identification of these subclonal populations, however, requires a detailed and accurate reconstruction of the cancer genome structure. Mainly the VAF (i.e., the fraction of the reads mapping to a region that shares a specific genotype) is of importance here. Nevertheless, it should be noted that VAF is highly dependent on the local copy number state and tumour purity. By correcting for copy numbers, observed VAFs are typically transformed into cancer-cell fractions (CCF, i.e., the fraction of tumour cells carrying the mutation). To finally identify subclonal populations, the distribution of CCFs is evaluated for distinct clusters that represent individual subpopulations.  
 
-These guidelines provides a workflow to infer the prevalence of somatic mutations in heterogeneous cancer samples from paired tumour-normal NGS data. To do so, copy number changes, tumour purity and ploidy is estimated using **Sequenza** and somatic mutations are clustered using **PyClone**. To transform the results generetad by Sequenza into a valid input file for PyClone, the *Sequenza_to_PyClone.py$ function can be used.
+These guidelines provides a workflow to infer the prevalence of somatic mutations in heterogeneous cancer samples from paired tumour-normal NGS data. To do so, copy number changes, tumour purity and ploidy is estimated using **Sequenza** and somatic mutations are clustered using **PyClone**. To transform the results generetad by Sequenza into a valid input file for PyClone, the *Sequenza_to_PyClone.py* function can be used.
 
 ## Copy Number, Tumor Purity and Ploidy Estimation using Sequenza.
 
@@ -66,7 +66,7 @@ Sequenza_to_PyClone.py -i Run1_segments.txt -v variants.vcf -o PyClone_input.tsv
 
 Finally, the PyClone_input.tsv file can be used as input for PyClone.
 ```
-PyClone run_analysis_pipeline --in_files PyClone_input.tsv --tumour purity *purity* --prior major_copy_number
+PyClone run_analysis_pipeline --in_files PyClone_input.tsv --tumour purity $purity --prior major_copy_number
 ```
 
 ---
