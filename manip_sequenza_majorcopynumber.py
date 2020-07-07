@@ -102,9 +102,6 @@ def main(args):
     normal_cn_list = []
     minor_cn_list = []
     major_cn_list = []
-    c1=0
-    c=0
-    count=0
     warning_list=[]
         
     for record in inputfile:
@@ -149,7 +146,7 @@ def main(args):
                 mutation_id_list.append(mutation_id)
                 ref_counts_list.append(ref_counts)
                 var_counts_list.append(var_counts)
-        else: # if mutation lies not in a segment, the major_cn is set to the normal_cn
+        else: # if mutation lies not in a segment, the major_cn is set to the normal_cn, this mutation is flagged in the warning_sequenza_mutations.tsv file
             minor_cn=0
             normal_cn_list.append(normal_cn)
             major_cn_list.append(normal_cn)
@@ -168,7 +165,7 @@ def main(args):
     df['normal_cn'] = df['normal_cn'].astype(int)
     df['major_cn'] = df['major_cn'].astype(int)
     df['minor_cn'] = df['minor_cn'].astype(int)
-    warning_list
+    
     df_warning = pd.DataFrame({'mutation_id':warning_list})
 
     df.to_csv(outputfile, sep='\t', index=False)
