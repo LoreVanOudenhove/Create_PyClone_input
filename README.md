@@ -30,15 +30,20 @@ sequenza−utils seqz_binning --seqz out.seqz.gz -w 50 -o out small.seqz.gz
 ```
 library(sequenza)
 
-data.file <- small.seqz.gz
+data.file <- "small.seqz.gz"
 analysis <- sequenza.extract(data.file, verbose = FALSE)
 CP <- sequenza.fit(analysis)
+
+# Write files and plots
 sequenza.results(sequenza.extract = analysis, cp.table = CP, sample.id = "run1")
 
+# Get confidence intervals and extract purity and ploidy
 confint <- get.ci(CP)
 purity <- confin$max.cellularity
 ploidy <- confint$max.ploidy
 ```
+
+This Sequenza analysis will generate a number of files and plots, among which the Run1_segments.txt file that contains detected segments, with estimated copy number state at each segment. 
 
 ---
 ## References
