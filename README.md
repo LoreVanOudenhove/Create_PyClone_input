@@ -4,7 +4,7 @@ The mutational profile of a cancer genome is characterized by a series of altera
 
 The identification of these subclonal populations, however, requires a detailed and accurate reconstruction of the cancer genome structure. Mainly the VAF (i.e., the fraction of the reads mapping to a region that shares a specific genotype) is of importance here. Nevertheless, it should be noted that VAF is highly dependent on the local copy number state and tumour purity. By correcting for copy numbers, observed VAFs are typically transformed into cancer-cell fractions (CCF, i.e., the fraction of tumour cells carrying the mutation). To finally identify subclonal populations, the distribution of CCFs is evaluated for distinct clusters that represent individual subpopulations.  
 
-These guidelines provides a workflow to infer the prevalence of somatic mutations in heterogeneous cancer samples from paired tumour-normal NGS data (Figure 2). To do so, copy number changes, tumour purity and ploidy is estimated using Sequenza and somatic mutations are clustered using PyClone. 
+These guidelines provides a workflow to infer the prevalence of somatic mutations in heterogeneous cancer samples from paired tumour-normal NGS data. To do so, copy number changes, tumour purity and ploidy is estimated using **Sequenza** and somatic mutations are clustered using **PyClone**. To transform the results generetad by Sequenza into a valid input file for PyClone, the *Sequenza_to_PyClone.py$ function can be used.
 
 ## Copy Number, Tumor Purity and Ploidy Estimation using Sequenza.
 
@@ -66,9 +66,10 @@ Sequenza_to_PyClone.py -i Run1_segments.txt -v variants.vcf -o PyClone_input.tsv
 
 Finally, the PyClone_input.tsv file can be used as input for PyClone.
 ```
-PyCLone run_analysis_pipeline --in_files PyClone_input.tsv --tumour purity *purity* --prior major_copy_number
+PyClone run_analysis_pipeline --in_files PyClone_input.tsv --tumour purity *purity* --prior major_copy_number
 ```
 
 ---
 ## References
 Favero, F., Joshi, T., Marquard, A. M., Birkbak, N. J., Krzystanek, M., Li, Q., … Eklund, A. C. (2015). Sequenza: Allele-specific copy number and mutation profiles from tumor sequencing data. Annals of Oncology, 26(1), 64–70. https://doi.org/10.1093/annonc/mdu479
+Roth, A., Khattra, J., Yap, D., Wan, A., Laks, E., Biele, J., Ha, G., Aparicio, S., Bouchard-Côté, A., & Shah, S. P. (2014). PyClone: statistical inference of clonal population structure in cancer. Nature methods, 11(4), 396–398. https://doi.org/10.1038/nmeth.2883
