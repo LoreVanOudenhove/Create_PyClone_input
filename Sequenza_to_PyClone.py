@@ -149,8 +149,8 @@ def main(args):
         else: # if mutation lies not in a segment, the major_cn is set to the normal_cn, this mutation is flagged in the warning_sequenza_mutations.tsv file
             minor_cn=0
             normal_cn_list.append(normal_cn)
-            major_cn_list.append(normal_cn)
-            minor_cn_list.append(minor_cn)
+            major_cn_list.append(1)
+            minor_cn_list.append(1)
             mutation_id_list.append(mutation_id)
             ref_counts_list.append(ref_counts)
             var_counts_list.append(var_counts)
