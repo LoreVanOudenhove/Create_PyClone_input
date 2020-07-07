@@ -6,15 +6,20 @@ The identification of these subclonal populations, however, requires a detailed 
 
 These guidelines provides a workflow to infer the prevalence of somatic mutations in heterogeneous cancer samples from paired tumour-normal NGS data (Figure 2). To do so, copy number changes, tumour purity and ploidy is estimated using Sequenza and somatic mutations are clustered using PyClone. 
 
+'''python
+def():
+        return
+'''
 ## Copy Number, Tumor Purity and Ploidy Estimation using Sequenza. 
 
 [Sequenza](https://cran.r-project.org/web/packages/sequenza/vignettes/sequenza.html) is an R package that enables the efficient estimation of tumour cellularity and ploidy, and generation of copy number, loss-of-heterozygosity, and mutation frequency profiles. More detailed information on how to run Sequenza can be found in the [Sequenza User Guide](https://cran.r-project.org/web/packages/sequenza/vignettes/sequenza.html).
 
 ### Running Sequenza: Preprocessing of Input Files
 * Process a FASTA file to produce a GC Wiggle track file:
-'''python
+'''
 sequenza−utils gc_wiggle −w 50 --fasta hg38.fa -o hg38.gc50Base.wig.gz
-'''* Process BAM and Wiggle files to produce a seqz file:
+'''
+* Process BAM and Wiggle files to produce a seqz file:
         sequenza−utils bam2seqz -n normal.bam -t tumor.bam --fasta hg38.fa \
             -gc hg38.gc50Base.wig.gz -o out.seqz.gz
 * Post-process by binning the original seqz file:
