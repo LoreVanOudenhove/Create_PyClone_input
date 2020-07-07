@@ -39,37 +39,41 @@ sequenza.results(sequenza.extract = analysis, cp.table = CP, sample.id = "run1")
 
 # Get confidence intervals and extract purity and ploidy
 confint <- get.ci(CP)
-purity <- confin$max.cellularity
+purity <- confint$max.cellularity
 ploidy <- confint$max.ploidy
 ```
+**is the purity shown in that analysis the one that should be used in the last command ? In which case you should mention it. Also, ploidy isn't used in the downstream analysis**
+
 
 This Sequenza analysis will generate a number of files and plots, among which the Run1_segments.txt file that contains detected segments, with estimated copy number state at each segment.
 
 # Create input for PyClone
 
-PyClone is a statistical model for inference of clonal population structures in cancers. Its algorithm relies on a Bayesian clustering method for grouping sets of deeply sequenced somatic mutations into putative clonal clusters while estimating their cellular prevalences and accounting for allelic imbalances introduced by segmental copy-number changes and normal-cell contamination. 
+PyClone is a statistical model for inference of clonal population structures in cancers. Its algorithm relies on a Bayesian clustering method for grouping sets of deeply sequenced somatic mutations into putative clonal clusters while estimating their cellular prevalences and accounting for allelic imbalances introduced by segmental copy-number changes and normal-cell contamination. **maybe add a link to pyclone doc like you did w/ sequenza ?**
 
 To run the PyClone analysis we can use the ```run_analysis_pipeline``` command. This command requires a tab delimited input file with the subsequent fields: 
 
 * mutation_id - A unique ID to identify the mutation. 
 * ref_counts - The number of reads covering the mutation which contain the reference allele. 
 * var_counts - The number of reads covering the mutation which contain the variant allele. 
-* normal_cn - The copy number of the cells in the normal population. For autosomal chromosomes this will be 2 and for sex chromosomes it could be either 1 or 2. 
-* minor_cn - The minor copy number of the cancer cells. 
-* major_cn - The major copy number of the cancer cells.
+* normal_cn - The copy number at the locus in normal cells. For autosomal chromosomes this will be 2 and for sex chromosomes it could be either 1 or 2. 
+* minor_cn - The minor copy number at the locus in cancer cells. 
+* major_cn - The major copy number at the locus in cancer cells.
 
 To obtain this tab delimited file, the Sequenza_to_PyClone.py function, provided in this repository can be used.
 ```
 Sequenza_to_PyClone.py -i Run1_segments.txt -v variants.vcf -o PyClone_input.tsv
 ```
-This function generates a tab delimited file with the required fields for PyClone. In addition, a *warning_sequenza_mutations.tsv* is generated, indicating the mutations that are not present in the Sequenza segments. Since no copy number is calculated using Sequenza, the minor and major copy number are set to 1 for these mutations.
-
 # Clonal Reconstruction using PyClone
 
 Finally, the PyClone_input.tsv file can be used as an input for PyClone.
+
+**I think the --tumor purity parameter is missing an underscore - corrected accordingly but please correct back if I'm wrong**
 ```
-PyClone run_analysis_pipeline --in_files PyClone_input.tsv --tumour purity $purity --prior major_copy_number
+PyClone run_analysis_pipeline --in_files PyClone_input.tsv --tumour_purity $purity --prior major_copy_number
 ```
+
+**Also maybe explain quickly the output of pyclone ?**
 
 ---
 ## References
