@@ -6,7 +6,8 @@ The identification of these subclonal populations, however, requires a detailed 
 
 These guidelines provides a workflow to infer the prevalence of somatic mutations in heterogeneous cancer samples from paired tumour-normal NGS data (Figure 2). To do so, copy number changes, tumour purity and ploidy is estimated using Sequenza and somatic mutations are clustered using PyClone. 
 
-## Copy Number, Tumor Purity and Ploidy Estimation using Sequenza. 
+## Copy Number, Tumor Purity and Ploidy Estimation using Sequenza.
+---
 
 [Sequenza](https://cran.r-project.org/web/packages/sequenza/vignettes/sequenza.html) is an R package that enables the efficient estimation of tumour cellularity and ploidy, and generation of copy number, loss-of-heterozygosity, and mutation frequency profiles. More detailed information on how to run Sequenza can be found in the [Sequenza User Guide](https://cran.r-project.org/web/packages/sequenza/vignettes/sequenza.html).
 
@@ -43,7 +44,25 @@ purity <- confin$max.cellularity
 ploidy <- confint$max.ploidy
 ```
 
-This Sequenza analysis will generate a number of files and plots, among which the Run1_segments.txt file that contains detected segments, with estimated copy number state at each segment. 
+This Sequenza analysis will generate a number of files and plots, among which the Run1_segments.txt file that contains detected segments, with estimated copy number state at each segment.
+
+# Clonal Reconstruction using PyClone
+---
+PyClone is a statistical model for inference of clonal population structures in cancers. Its algorithm relies on a Bayesian clustering method for grouping sets of deeply sequenced somatic mutations into putative clonal clusters while estimating their cellular prevalences and accounting for allelic imbalances introduced by segmental copy-number changes and normal-cell contamination. 
+
+To run the PyClone analysis we can use the ```run_analysis_pipeline``` command. This command requires a tab delimited input file with the subsequent fields: 
+
+* mutation_id - A unique ID to identify the mutation. 
+* ref_counts - The number of reads covering the mutation which contain the reference allele. 
+* var_counts - The number of reads covering the mutation which contain the variant allele. 
+* normal_cn - The copy number of the cells in the normal population. For autosomal chromosomes this will be 2 and for sex chromosomes it could be either 1 or 2. 
+* minor_cn - The minor copy number of the cancer cells. 
+* major_cn - The major copy number of the cancer cells.
+
+To obtain this tab delimited file, the Python function , provided in this repository can be used.
+```
+Sequenza_to_PyClone.py -i Run1_segments.txt -v variants.vcf  
+```
 
 ---
 ## References
